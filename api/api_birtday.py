@@ -1,5 +1,7 @@
-import requests
 import json
+
+import requests
+
 BASE_URL = 'http://127.0.0.1:8000'
 from datetime import date, datetime
 
@@ -32,9 +34,14 @@ def birthday(admin_id, group_id):
                 if next_birthday < today:
                     next_birthday = datetime(today.year + 1, user_birthday.month, user_birthday.day).date()
                 days_left = (next_birthday - today).days
-                msg += f"{j['first_name']} ning tug'ulgan kuniga {days_left} kun qoldi\n"
+                if days_left == 0:
+                    msg += f"{j['first_name']} ning tug'ulgan kuni\n"
+                else:
+                    msg += f"{j['first_name']} ning tug'ulgan kuniga {days_left} kun qoldi\n"
             else:
                 count += 1
     if count == len_user_data:
         return "bu guruhga hali odam qo'shmadingiz"
     return msg
+
+
