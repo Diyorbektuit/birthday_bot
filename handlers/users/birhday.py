@@ -1,3 +1,4 @@
+import asyncio
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from api.api_birtday import birthday
@@ -21,6 +22,8 @@ async def get_birthday(message: types.Message):
 async def get_birthday(message: types.Message, state: FSMContext):
     admin_id = take_admin_id(message.from_user.id)
     group_id = take_group_id(message.text)
-    print(group_id)
     await message.reply(birthday(admin_id, group_id))
     await state.finish()
+
+
+

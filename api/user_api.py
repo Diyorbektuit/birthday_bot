@@ -1,5 +1,7 @@
-import requests
 import json
+
+import requests
+
 BASE_URL = 'http://127.0.0.1:8000'
 
 
@@ -47,7 +49,9 @@ def add_group_user(admin_id, group_id, position_id, tg_id, first_name, last_name
             break
 
     if is_admin == True and have_user_this_group == False:
-        groupuser_post = requests.post(url=url, data={'admin': admin_id, 'group': group_id, 'position': position_id, 'tg_id': tg_id, 'first_name': first_name, 'last_name': last_name, 'username': username, 'birthday': birthday})
+        groupuser_post = requests.post(url=url, data={'admin': admin_id, 'group': group_id, 'position': position_id,
+                                                      'tg_id': tg_id, 'first_name': first_name, 'last_name': last_name,
+                                                      'username': username, 'birthday': birthday})
         return "user guruhga qo'shildi"
 
     if is_admin == False:
@@ -60,21 +64,3 @@ def add_group_user(admin_id, group_id, position_id, tg_id, first_name, last_name
 def is_birthday(user, birthday, today):
     if birthday == today:
         return f"bugun {user}ni tug'ulgan kuni"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
